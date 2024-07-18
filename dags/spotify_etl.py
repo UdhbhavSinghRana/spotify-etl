@@ -16,8 +16,8 @@ except ImportError:
 
 import pandas as pd
 
-Cid = "80a1bc7bdc4a4b0492d4fedbcf52387d"
-Csecret = "c6079444278846479ae2b186a38ff4d0"
+Cid = os.environ.get('SPOTIPY_CLIENT_ID')
+Csecret = os.environ.get('SPOTIPY_CLIENT_SECRET')
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=Cid,
                                                client_secret=Csecret,
