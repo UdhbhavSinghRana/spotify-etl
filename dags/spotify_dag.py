@@ -14,6 +14,9 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
 }
 
+def run_spotify_etl2():
+    print("This is another ETL process")
+
 dag = DAG(
     'spotify_dag',
     default_args=default_args,
@@ -29,4 +32,10 @@ run_etl = PythonOperator(
     dag=dag,
 )
 
-run_etl
+run_etl2 = PythonOperator(
+    task_id='whole_spotify_etl2',
+    python_callable= run_spotify_etl2,
+    dag=dag,
+)
+
+run_etl >> run_etl2

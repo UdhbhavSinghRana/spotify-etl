@@ -2,10 +2,22 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import os
 import json
+import importlib
+
+# Check if pandas is installed
+try:
+    importlib.import_module('pandas')
+except ImportError:
+    import subprocess
+    import sys
+
+    print("pandas is not installed. Installing...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "pandas"])
+
 import pandas as pd
 
-Cid = os.environ.get('SPOTIFY_CLIENT_ID')
-Csecret = os.environ.get('SPOTIFY_CLIENT_SECRET')
+Cid = "80a1bc7bdc4a4b0492d4fedbcf52387d"
+Csecret = "c6079444278846479ae2b186a38ff4d0"
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=Cid,
                                                client_secret=Csecret,
