@@ -42,3 +42,4 @@ def run_spotify_etl():
         list.append(refined_text)
 
     pd.DataFrame(list).to_csv('taylor_swift_albums.csv', index=False)
+    
